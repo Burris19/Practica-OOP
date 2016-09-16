@@ -5,56 +5,6 @@ function show($message)
     echo "<p>$message</p>";
 }
 
-abstract class Unit {
-    protected $hp = 40;
-    protected $neame;
-
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function getHp()
-    {
-        return $this->hp;
-    }
-
-    private function setHp($points)
-    {
-        $this->hp = $points;
-
-        show("{$this->name} ahora tiene {$this->hp} puntos de vida");
-    }
-
-    public function move($direction)
-    {
-        show("{$this->name} avanza hacea $direction</p>";
-    }
-
-    abstract public function attack(Unit $opponent)
-
-    public function takeDamage($damage)
-    {
-        $this->setHp($this->hp - $damage);
-
-        if ($this->hp <= 0) {
-            $this->die();
-        }
-
-    }
-
-    public function die()
-    {
-        show("{$this->name} muere");
-
-        exit();
-    }
-}
 
 class Soldier extends Unit
 {

@@ -1,38 +1,32 @@
 <?php
 
-class Person {
-    protected $firstName;
-    protected $lastName;
-    protected $nickname;
+namespace Styde;
 
-    function __construct($firstName, $lastName) {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
+require 'src/Helper.php';
+require 'vendor/Armor.php';
 
-    }
+spl_autoload_register(function ($className) {
+    if (strpos($className, 'Styde\\') === 0) {
 
-    public function setNickName($nickname) {
-        if (! empty($nickname)) {
-            $this->nickname = $nickname;
+        $className = str_ireplace('Styde\\', '', $className);
+
+        if (file_exists("src/$className.php")) {
+              require "src/$className.php";
         }
     }
 
-    public function getNickname() {
-        return $this->nickname;
-    }
+});
 
-    public function getLastName() {
-        return $this->lastName;
-    }
+$armor = new BronzeArmor();
 
-    public function getFirstName() {
-        return $this->firstName;
-    }
+$ramm = new Soldier('Ramm');
 
-    public function fullName() {
-        return $this->firstName . ' ' . $this->lastName
-    }
-}
+$silence = new Archer('Silence');
 
+$silence->attack($ramm);
 
-$person1 = new Person('Julian', 'Hernandez');
+$ramm->setArmor(new CursedArmor);
+
+$silence->attack($ramm);
+
+$ramm->attack($silence);
