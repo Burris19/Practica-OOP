@@ -2,9 +2,7 @@
 
 namespace Styde;
 
-use Warcraft\Armor as WarcraftArmor;
-
-class BronzeArmor implements WarcraftArmor
+class BronzeArmor implements Armor
 {
     public function absorbDamage($damage)
     {
