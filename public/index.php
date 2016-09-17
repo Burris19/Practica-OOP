@@ -4,9 +4,7 @@ namespace Styde;
 
 require '../vendor/autoload.php';
 
-require '../src/Helper.php';
-
-$armor = new BronzeArmor();
+$armor = new Armors\BronzeArmor();
 
 $ramm = new Soldier('Ramm');
 
@@ -14,7 +12,7 @@ $silence = new Archer('Silence');
 
 $silence->attack($ramm);
 
-$ramm->setArmor(new CursedArmor);
+$ramm->setArmor(new Armors\CursedArmor);
 
 $silence->attack($ramm);
 
