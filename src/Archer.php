@@ -2,17 +2,12 @@
 
 namespace Styde;
 
-class Archer extends Unit{
+use Styde\Weapons\Bow;
 
-    protected $damage = 20;
-
-    public function attack(Unit $opponent)
+class Archer extends Unit
+{
+    public function __construct($name, Bow $bow)
     {
-        show(
-            "{$this->name} dispara una flecha a  {$opponent->getName()}"
-        );
-
-        $opponent->takeDamage($this->damage);
-
+        parent::__construct($name, $bow);
     }
 }
