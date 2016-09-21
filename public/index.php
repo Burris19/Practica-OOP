@@ -4,11 +4,11 @@ namespace Styde;
 
 require '../vendor/autoload.php';
 
-$ramm = new Soldier('Ramm', new Weapons\BasicSword);
+$ramm = new Unit('Ramm', new Weapons\BasicSword);
 
-$ramm->setArmor(new Armors\BronzeArmor());
+$ramm->setArmor(new Armors\SilverArmor());
 
-$silence = new Archer('Silence', new Weapons\CrossBow);
+$silence = new Unit('Silence', new Weapons\FireBow);
 
 $silence->attack($ramm);
 

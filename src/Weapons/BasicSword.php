@@ -8,9 +8,6 @@ use Styde\Unit;
 class BasicSword extends Weapon
 {
     protected $damage = 40;
+    protected $description = ':unit ataca con la espada a :opponent';
 
-    public function getDescription(Unit $attacker, Unit $opponent)
-    {
-        return "{$attacker->getName()} ataca con la espada a {$opponent->getName()}";
-    }
 }

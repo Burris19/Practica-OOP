@@ -2,7 +2,7 @@
 
 namespace Styde;
 
-abstract class Unit {
+class Unit {
     protected $hp = 40;
     protected $neame;
     protected $armor;
@@ -41,14 +41,16 @@ abstract class Unit {
 
     public function attack(Unit $opponent)
     {
-        show($this->weapon->getDescription($this, $opponent));
+        $attack = $this->weapon->createAttack();
 
-        $opponent->takeDamage($this->weapon->getDamage());
+        show($attack->getDescription($this, $opponent));
+
+        $opponent->takeDamage($attack);
     }
 
-    public function takeDamage($damage)
+    public function takeDamage(Attack $attack)
     {
-        $this->hp = $this->hp - $this->absorbDamage($damage);
+        $this->hp = $this->hp - $this->absorbDamage($attack);
 
         show("{$this->name} ahora tiene {$this->hp} puntos de vida");
 
@@ -65,12 +67,12 @@ abstract class Unit {
         exit();
     }
 
-    public function absorbDamage($damage)
+    public function absorbDamage(Attack $attack)
     {
         if ($this->armor) {
-            $damage = $this->armor->absorbDamage($damage);
+            return $damage = $this->armor->absorbDamage($attack);
         }
 
-        return $damage;
+        return $attack->getDamage();
     }
 }
