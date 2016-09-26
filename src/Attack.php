@@ -17,11 +17,10 @@ class Attack
 
     public function getDescription(Unit $attacker, Unit $opponent)
     {
-        return str_replace(
-          [':unit', ':opponent'],
-          [$attacker->getName(), $opponent->getName()],
-          $this->description
-        );
+        return Translator::get($this->description, [
+            'unit' => $attacker->getName(),
+            'opponent' => $opponent->getName(),
+        ]);
     }
 
     public function getDamage()
