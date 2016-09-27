@@ -1,0 +1,5 @@
+(2016-09-27 16:30:30) Silence dispara una flecha de fue a Ram
+(2016-09-27 16:30:30) Ram ahora tiene 10 puntos de vida
+(2016-09-27 16:30:30) Silence dispara una flecha de fue a Ram
+(2016-09-27 16:30:30) Ram ahora tiene -20 puntos de vida
+(2016-09-27 16:30:30) Ram muere
