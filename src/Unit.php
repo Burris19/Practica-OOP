@@ -3,6 +3,9 @@
 namespace Styde;
 
 class Unit {
+
+    const MAX_DAMAGE = 100;
+
     protected $hp = 40;
     protected $neame;
     protected $armor;
@@ -68,7 +71,9 @@ class Unit {
 
     public function takeDamage(Attack $attack)
     {
-        $this->hp = $this->hp - $this->armor->absorbDamage($attack);
+        $this->setHp(
+            $this->armor->absorbDamage($attack)
+        );       
 
         Log::info("{$this->name} ahora tiene {$this->hp} puntos de vida");
 
@@ -76,6 +81,13 @@ class Unit {
             $this->die();
         }
 
+    }
+
+    protected function setHp($damage)
+    {
+        if ($damage > static::MAX_DAMAGE) {
+            $damage = static::MAX_DAMAGE;
+        }
     }
 
     public function die()

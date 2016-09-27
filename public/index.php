@@ -18,6 +18,7 @@ $ramm = Unit::createSoldier()
             ->setArmor(new Armors\SilverArmor())
             ->setShield();
 
+
 $silence = new Unit('Silence', new Weapons\FireBow);
 
 $silence->attack($ramm);
