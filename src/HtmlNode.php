@@ -15,6 +15,15 @@ class HtmlNode
         $this->attributes = $attributes;
     }
 
+    public function __invoke($name, $default = null)
+    {
+        return $this->get($name, $default);
+    }
+    public function get($name, $default = null)
+    {
+        return $this->attributes[$name] ?? $default;
+    }
+
     public function render()
     {
         $result =  "<{$this->tag} {$this->renderAttributes()}>";
@@ -26,6 +35,11 @@ class HtmlNode
         }
 
         return $result;
+    }
+
+    public function __toString()
+    {
+        return $this->render();
     }
 
     public static function __callStatic($method, array $args = [])

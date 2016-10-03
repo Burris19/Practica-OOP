@@ -38,4 +38,6 @@ $node = HtmlNode::textarea('Styde')
     ->name('content')
     ->id('contenido');
 
-echo $node->render();
+var_dump($node('name'), $node('width', 100));
+
+// echo $node;
